@@ -1,0 +1,16 @@
+@import url("https://use.typekit.net/bny3npn.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .app-container {
+        max-width: 1500px;
+        @apply mx-auto px-[120px];
+    }
+
+    nav .app-container {
+        /*@apply px-[120px];*/
+    }
+}

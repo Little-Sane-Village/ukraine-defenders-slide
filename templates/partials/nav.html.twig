@@ -1,0 +1,17 @@
+<nav class="lg:fixed lg:h-[78px] top-0 z-30 w-full bg-white shadow-md" x-data="{mobileOpen: false}">
+    <div class="app-container flex flex-col lg:flex-row justify-between lg:items-center">
+        <div class="flex justify-between items-center w-full lg:w-auto py-2 lg:py-0">
+            {#<img alt="Logo" src="/images/logo.png" class="h-[30px]"/>#}
+            <button @click.prevent="mobileOpen = !mobileOpen" class="lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <ul class="hidden flex-col lg:flex lg:flex-row lg:items-center gap-4 lg:gap-[50px] py-6 lg:py-0 text-sm text-black font-semibold" :class="{'flex': mobileOpen, 'hidden': !mobileOpen}">
+            {% for menu_item in menu %}
+                {% include 'partials/nav-link.html.twig' with menu_item %}
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

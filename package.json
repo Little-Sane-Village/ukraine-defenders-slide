@@ -1,0 +1,18 @@
+{
+  "name": "ukraine-defenders-slide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/Users/skeemer/Sites/ayolab-static"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}

@@ -1,0 +1,14 @@
+<header class="flex flex-col items-end w-full lg:pt-[78px]">
+    {% include 'partials/nav.html.twig' %}
+    {% if theme %}
+        <div class="w-full bg-{{ themes[theme].background }}">
+            <div class="app-container flex w-full h-[218px]">
+                <div class="relative pt-[70px] w-full">
+                    <div class="absolute inset-0 left-[65px] -mr-[70px]"  style="background-image: url('{{ themes[theme].image }}')"></div>
+                    <h1 class="font-semibold text-5xl text-{{ themes[theme].color }}">{{ title }}</h1>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class=""></div>
+</header>

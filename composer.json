@@ -1,0 +1,19 @@
+{
+    "name": "little-sane-village/ukraine-defenders-slide",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Leo Lutz",
+            "email": "leo@leolutz.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "require": {
+        "ext-fileinfo": "*",
+        "twig/twig": "^3.4"
+    }
+}

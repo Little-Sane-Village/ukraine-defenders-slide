@@ -1,0 +1,17 @@
+<li class="flex lg:h-[78px]">
+    {% if type == 'link' %}
+        {% if href == current_uri %}
+            <a href="{{ href }}" class="flex items-center border-transparent border-l-4 lg:border-l-0 lg:border-y-2 py-1 pl-4 lg:pl-0 border-l-brand-primary border-b-brand-primary" aria-current="page">
+                <span>{{ text }}</span>
+            </a>
+        {% else %}
+            <a href="{{ href }}" class="flex items-center border-transparent border-l-4 lg:border-l-0 lg:border-y-2 py-1 lg:py-[27px] pl-4 lg:pl-0 hover:border-l-brand-accent hover:border-b-brand-accent hover:text-brand-accent">
+                <span>{{ text }}</span>
+            </a>
+        {% endif %}
+    {% else %}
+        <div class="flex items-center border-transparent border-l-4 lg:border-l-0 pl-4 lg:pl-0 py-1 lg:py-0">
+            <a href="{{ href }}" class="px-[24px] py-[14px] rounded-lg bg-brand-accent">{{ text }}</a>
+        </div>
+    {% endif %}
+</li>
