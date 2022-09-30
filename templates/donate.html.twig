@@ -1,1 +1,160 @@
-donate
+{% extends "layouts/main.html.twig" %}
+{% set prices = [75, 125, 175] %}
+{% block content %}
+    <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-blue-ua text-white">
+        <img class="lg:w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
+             src="/images/slide.png" alt="slide">
+        <div class="relative app-container flex flex-col gap-8 md:gap-16">
+            <div class="flex items-center gap-6">
+                <h3 class="text-sm uppercase tracking-[0.2em]">
+                    Donate to Ukraine Defenders
+                </h3>
+                <svg width="178" height="2">
+                    <rect width="178" height="2" fill="currentColor" />
+                </svg>
+            </div>
+            <h2 class="text-5xl font-bold leading-tight max-w-[560px]">
+                Donate to Ukraine Defenders
+            </h2>
+            <div class=" space-y-6 lg:space-y-12">
+                <p class="text-2xl font-medium max-w-[720px]">
+                    Every donation helps us purchase more humanitarian aid and to help rebuild more playgrounds in
+                    Ukraine.
+                </p>
+                <form
+                        action="/.netlify/functions/donate-amount"
+                        method="get"
+                        x-data="{
+                          amount: '75',
+                          customAmount: null,
+                          customCache: null,
+                          customChanged() {
+                            if (this.customAmount !== this.customCache) {
+                                this.customCache = this.customAmount;
+                                if (this.customAmount !== null) {
+                                    this.amount = this.customAmount;
+                                }
+                            }
+                          },
+                          isCustom() {
+                            return this.amount && !{{ prices|json_encode }}.includes(parseInt(this.amount));
+                          },
+                        }"
+                        x-effect="customAmount && customChanged()"
+                        class="rounded-lg bg-white p-4 md:p-8 lg:p-12 text-black lg:w-max flex flex-col gap-6"
+                >
+                    <input type="hidden" name="amount" x-model="amount">
+
+                    <!-- Radio Group -->
+                    <div
+                            x-data="{
+                                value: null,
+                                select(option) { this.amount = this.value = option },
+                                isSelected(option) { return this.value === option },
+                                hasRovingTabindex(option, el) {
+                                    // If this is the first option element and no option has been selected, make it focusable.
+                                    if (this.value === null && Array.from(el.parentElement.children).indexOf(el) === 0) return true
+
+                                    return this.isSelected(option)
+                                },
+                                selectNext(e) {
+                                    let el = e.target
+                                    let siblings = Array.from(el.parentElement.children)
+                                    let index = siblings.indexOf(el)
+                                    let next = siblings[index === siblings.length - 1 ? 0 : index + 1]
+
+                                    next.click(); next.focus();
+                                },
+                                selectPrevious(e) {
+                                    let el = e.target
+                                    let siblings = Array.from(el.parentElement.children)
+                                    let index = siblings.indexOf(el)
+                                    let previous = siblings[index === 0 ? siblings.length - 1 : index - 1]
+
+                                    previous.click(); previous.focus();
+                                },
+                            }"
+                            @keydown.down.stop.prevent="selectNext"
+                            @keydown.right.stop.prevent="selectNext"
+                            @keydown.up.stop.prevent="selectPrevious"
+                            @keydown.left.stop.prevent="selectPrevious"
+                            x-effect="if (value !== amount) value = amount"
+                            role="radiogroup"
+                            :aria-labelledby="$id('radio-group-label')"
+                            x-id="['radio-group-label']"
+                            class="max-w-lg w-full"
+                    >
+                        <!-- Radio Group Label -->
+                        <label :id="$id('radio-group-label')" role="none" class="hidden">Donation amount: <span x-text="value"></span></label>
+
+                        <fieldset class="mt-2">
+                            <legend class="sr-only">Choose an amount</legend>
+                            <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
+                                <!--
+                                  Active: "ring-2 ring-offset-2 ring-indigo-500"
+                                  Checked: "bg-indigo-600 border-transparent text-white hover:bg-indigo-700", Not Checked: "bg-white border-gray-200 text-gray-900 hover:bg-gray-50"
+                                -->
+                                {% for price in prices %}
+                                    <label
+                                            x-data="{ option: '{{ price }}'}"
+                                            @click="select(option)"
+                                            @keydown.enter.stop.prevent="select(option)"
+                                            @keydown.space.stop.prevent="select(option)"
+                                            :aria-checked="isSelected(option)"
+                                            :tabindex="hasRovingTabindex(option, $el) ? 0 : -1"
+                                            :aria-labelledby="$id('radio-option-label')"
+                                            x-id="['radio-option-label', 'radio-option-description']"
+                                            role="radio"
+                                            class="border rounded-md py-3 px-3 flex items-center justify-center font-medium sm:flex-1 cursor-pointer focus:outline-none"
+                                            :class="{
+                                                'bg-blue-ua border-transparent text-white hover:bg-blue-700': isSelected(option),
+                                                'focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500': isSelected(option),
+                                                'bg-white border-gray-200 text-gray-900 hover:bg-gray-50': ! isSelected(option),
+                                            }"
+                                                >
+                                        <span :id="$id('radio-option-label')">{{ price }} <span class="text-[0.9em] align-top">zł</span></span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <label for="custom_amount" class="sr-only">Custom Donation Amount:</label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                            <input
+                                    type="number"
+                                    x-model="customAmount"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                    id="custom_amount"
+                                    x-ref="custom"
+                                    class="block w-full min-w-0 flex-1 rounded-none rounded-l-md border border-r-0 border-gray-300 px-3 py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:border-indigo-500 focus:ring-indigo-500"
+                                    placeholder="75"
+                            >
+                            <button
+                                    type="button"
+                                    @click="if (customAmount) amount = customAmount; $refs.custom.focus()"
+                                    class="inline-flex items-center rounded-none rounded-r-md border border-gray-300 bg-gray-50 px-3 text-gray-500"
+                                    :class="{
+                                        'bg-blue-ua border-blue-ua text-white':isCustom(),
+                                        'bg-gray-50 border-gray-300 text-gray-500':!isCustom(),
+                                    }"
+                                    aria-label="Click to use custom amount"
+                            >zł</button>
+                        </div>
+                    </div>
+                    <div>
+                        <button
+                                type="submit"
+                                class="rounded-md border border-transparent bg-blue-ua px-6 py-3 font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        >
+                            Checkout &mdash; <span x-text="amount"></span> <span class="text-[0.9em] align-top">zł</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div></div>
+        </div>
+    </section>
+
+
+{% endblock %}

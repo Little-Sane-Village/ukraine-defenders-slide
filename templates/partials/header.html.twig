@@ -1,14 +1,15 @@
-<header class="flex flex-col items-end w-full lg:pt-[78px]">
-    {% include 'partials/nav.html.twig' %}
-    {% if theme %}
-        <div class="w-full bg-{{ themes[theme].background }}">
-            <div class="app-container flex w-full h-[218px]">
-                <div class="relative pt-[70px] w-full">
-                    <div class="absolute inset-0 left-[65px] -mr-[70px]"  style="background-image: url('{{ themes[theme].image }}')"></div>
-                    <h1 class="font-semibold text-5xl text-{{ themes[theme].color }}">{{ title }}</h1>
+<header class="bg-yellow-ua py-4 lg:py-10">
+    <div class="relative app-container">
+        <div class="flex flex-wrap justify-between items-end gap-8">
+            <img src="/images/logo.svg"/>
+            <div class="flex flex-col items-end gap-4">
+                <h3 class="text-sm uppercase tracking-[0.2em]">Special Thanks to <strong>Robert Kuśmirowski</strong> and</h3>
+                <div class="flex flex-wrap md:flex-no-wrap gap-x-12 gap-y-4">
+                    <img src="/images/thanks/rozdroza.png" alt="OŚRODEK ROZDROŻA" class="h-[42px]"/>
+                    <img src="/images/thanks/ikml.png" alt="" class="h-[42px]"/>
+                    <img src="/images/thanks/Davaj_Ukraine_v01_A3.png" alt="Davaj Ukraine" class="h-[42px]"/>
                 </div>
             </div>
         </div>
-    {% endif %}
-    <div class=""></div>
+    </div>
 </header>

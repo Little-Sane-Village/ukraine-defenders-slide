@@ -10,7 +10,7 @@
             <div class="flex flex-wrap justify-between items-end gap-8">
                 <img src="/images/logo.svg"/>
                 <div class="flex flex-col items-end gap-4">
-                    <h3 class="text-sm uppercase tracking-[0.2em]">Special Thanks To</h3>
+                    <h3 class="text-sm uppercase tracking-[0.2em]">Special Thanks to <strong>Robert Kuśmirowski</strong> and</h3>
                     <div class="flex flex-wrap md:flex-no-wrap gap-x-12 gap-y-4">
                         <img src="/images/thanks/rozdroza.png" alt="OŚRODEK ROZDROŻA" class="h-[42px]"/>
                         <img src="/images/thanks/ikml.png" alt="" class="h-[42px]"/>
@@ -83,9 +83,86 @@
         </div>
     </section>
 
+    <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-blue-ua text-white">
+        <img class="lg:w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
+             src="/images/slide2.png" alt="slide">
+        <div class="relative app-container flex flex-col gap-8 md:gap-16">
+            <div class="flex items-center gap-6">
+                <h3 class="text-sm uppercase tracking-[0.2em]">
+                    What Happened
+                </h3>
+                <svg width="178" height="2">
+                    <rect width="178" height="2" fill="currentColor" />
+                </svg>
+            </div>
+            <h2 class="text-5xl font-bold leading-tight max-w-[560px]">
+                The Story
+            </h2>
+            <div class="text-2xl font-medium space-y-6 lg:space-y-10">
+                <p class="max-w-[984px]">
+                    Video interviews with residents in Irpin, where the slide was located.
+                </p>
+
+                <div class="lg:px-20 grid grid-cols-2 gap-8" x-data="{}">
+                    {% for video in videos %}
+                        <button
+                                type="button"
+                                class="aspect-video w-full bg-center max-w-[450px] bg-cover"
+                                style="background-image:url('https://img.youtube.com/vi/{{ video.id }}/hqdefault.jpg')"
+                                @click.prevent="$dispatch('open-video', '{{ video.id }}')"
+                        >
+                            <span class="sr-only">Watch Video: {{ video.title }}</span>
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+            <div></div>
+        </div>
+    </section>
+
+    <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-[#450808]">
+        <img class="w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
+             src="/images/car.png" alt="slide">
+        <div class="relative app-container flex flex-col gap-8 md:gap-16 lg:gap-[120px] text-white">
+            <div class="flex items-center gap-6">
+                <h3 class="text-sm uppercase tracking-[0.2em]">
+                    What Happened
+                </h3>
+                <svg width="178" height="2">
+                    <rect width="178" height="2" fill="currentColor" />
+                </svg>
+            </div>
+            <h2 class="text-5xl font-bold leading-tight max-w-[560px]">
+                This is not an isolated incident in one town...
+            </h2>
+            <div class="text-2xl font-medium max-w-[984px] space-y-6">
+                <p>
+                    Russia has committed many war crimes all over Ukraine:
+                </p>
+                <p>
+                    the use of cluster munitions on civilian targets; killings, torture and sexual violence against
+                    civilian adults and children; targeting civilian infrastructure such as schools and playgrounds;
+                    attacking cultural sites and medical care facilities.
+                </p>
+                <p>
+                    This is an effort to wipe out what it means to be Ukrainian. It is genocide.
+                </p>
+            </div>
+            <div></div>
+        </div>
+    </section>
+
+    <section class="bg-yellow-ua">
+        <div class="app-container flex justify-center gap-6 md:gap-12 py-4 md:py-12">
+            <p class="text-xl md:text-2xl lg:text-5xl font-bold">
+                And did you know&hellip;
+            </p>
+        </div>
+    </section>
+
     <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-blue-ua">
         <img class="w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
-             src="/images/slide.png" alt="slide">
+             src="/images/windshield.png" alt="ruined windshield">
         <div class="relative app-container flex flex-col gap-8 md:gap-16 lg:gap-[120px] text-white">
             <div class="flex items-center gap-6">
                 <h3 class="text-sm uppercase tracking-[0.2em]">
@@ -114,7 +191,7 @@
 
     <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-yellow-ua">
         <img class="lg:w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
-             src="/images/slide.png" alt="slide">
+             src="/images/girl.png" alt="girl with slide">
         <div class="relative app-container flex flex-col gap-8 md:gap-16 lg:gap-[120px] text-white">
             <div class="flex items-center gap-6">
                 <h3 class="text-sm uppercase tracking-[0.2em]">
@@ -125,7 +202,7 @@
                 </svg>
             </div>
             <h2 class="text-5xl font-bold leading-tight max-w-[560px]">
-                An object of the current war experience in Ukraine
+                As of August 10th, 2022, at least 942 children have been killed or injured
             </h2>
             <div class="text-2xl font-medium max-w-[984px] space-y-6">
                 <p>
@@ -136,4 +213,47 @@
             <div></div>
         </div>
     </section>
+
+    <div x-data="{ open: false, id: null, close() {this.open = false; this.id = null} }" class="flex justify-center" @open-video.window="id = $event.detail; open = true">
+        <template x-teleport="body">
+            <!-- Modal -->
+            <div
+                    x-show="open"
+                    style="display: none"
+                    x-on:keydown.escape.prevent.stop="close()"
+                    role="dialog"
+                    aria-modal="true"
+                    x-id="['modal-title']"
+                    {#x-teleport="body"#}
+                    :aria-labelledby="$id('modal-title')"
+                    class="fixed inset-0 z-10 overflow-y-auto"
+            >
+                <!-- Overlay -->
+                <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-70"></div>
+
+                <!-- Panel -->
+                <div
+                        x-show="open" x-transition
+                        x-on:click="close()"
+                        class="relative flex min-h-screen items-center justify-center p-4"
+                >
+                    <div
+                            x-on:click.stop
+                            x-trap.noscroll.inert="open"
+                            class="relative w-full max-w-2xl overflow-y-auto rounded-xl bg-black p-4 lg:p-8 shadow-lg"
+                    >
+                        <div class="relative pt-[56.25%] h-0 overflow-hidden">
+                            <iframe :src="'https://www.youtube.com/embed/'+id+'?autoplay=1'"
+                                    class="absolute inset-0 w-full h-full"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
 {% endblock %}

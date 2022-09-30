@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-      'dist/**/*.html',
+      './dist/**/*.html',
   ],
   theme: {
     fontFamily: {
@@ -32,7 +32,15 @@ module.exports = {
           ua: '#FFD700',
         },
       }
-    }
+    },
+    aspectRatio: {
+      auto: 'auto',
+      square: '1 / 1',
+      video: '16 / 9',
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+  ],
 }

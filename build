@@ -34,4 +34,4 @@ foreach($files as $path => $file) {
 
 echo "Running Tailwind CSS";
 chdir('..');
-exec('npx tailwindcss -i ./resources/css/app.css -o ./dist/style.css --minify');
+exec('npx tailwindcss -i ./resources/css/app.css -o ./dist/style.css');

@@ -22,21 +22,22 @@ return [
             'type' => 'link',
         ],
     ],
-    'themes' => [
-        'blue' => [
-            'color' => 'white',
-            'background' => 'brand-secondary',
-            'image' => '/images/Header-image-2.svg'
+    'videos' => [
+        [
+            'id' => '7MbZ8XbkaIU',
+            'title' => 'Slide Project - Interview #1',
         ],
-        'dark' => [
-            'color' => 'white',
-            'background' => 'brand-primary',
-            'image' => '/images/header-image-1.svg'
+        [
+            'id' => 'j1feeICue9M',
+            'title' => 'Slide Project - Interview #2',
         ],
-        'teal' => [
-            'color' => 'white',
-            'background' => 'brand-accent',
-            'image' => '/images/Header-image-2.svg'
+        [
+            'id' => 'JKH5KX3Nd5Y',
+            'title' => 'Slide Project - Interview #3',
+        ],
+        [
+            'id' => 'UF0On35XaJ8',
+            'title' => 'Slide Project - Interview #4',
         ],
     ],
 ];

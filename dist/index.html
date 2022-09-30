@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="/style.css">
     
     <script src="//unpkg.com/alpinejs" defer></script>
 
@@ -21,7 +21,7 @@
             <div class="flex flex-wrap justify-between items-end gap-8">
                 <img src="/images/logo.svg"/>
                 <div class="flex flex-col items-end gap-4">
-                    <h3 class="text-sm uppercase tracking-[0.2em]">Special Thanks To</h3>
+                    <h3 class="text-sm uppercase tracking-[0.2em]">Special Thanks to <strong>Robert Kuśmirowski</strong> and</h3>
                     <div class="flex flex-wrap md:flex-no-wrap gap-x-12 gap-y-4">
                         <img src="/images/thanks/rozdroza.png" alt="OŚRODEK ROZDROŻA" class="h-[42px]"/>
                         <img src="/images/thanks/ikml.png" alt="" class="h-[42px]"/>
@@ -35,7 +35,7 @@
                     <div class="h-5 w-5 bg-yellow-ua"></div>
                 </div>
                 <div class="">
-                    <p class="max-w-[762px] text-2xl md:text-4xl lg:text-[64px] font-bold leading-tight">
+                    <p class="max-w-[762px] text-2xl md:text-4xl lg:text-[64px] font-bold leading-tight md:leading-tight">
                         “.. to protect the child from all forms of physical or mental violence ..”
                     </p>
                     <p class="md:text-2xl italic font-medium p-6">
@@ -93,9 +93,108 @@
         </div>
     </section>
 
+    <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-blue-ua text-white">
+        <img class="lg:w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
+             src="/images/slide2.png" alt="slide">
+        <div class="relative app-container flex flex-col gap-8 md:gap-16">
+            <div class="flex items-center gap-6">
+                <h3 class="text-sm uppercase tracking-[0.2em]">
+                    What Happened
+                </h3>
+                <svg width="178" height="2">
+                    <rect width="178" height="2" fill="currentColor" />
+                </svg>
+            </div>
+            <h2 class="text-5xl font-bold leading-tight max-w-[560px]">
+                The Story
+            </h2>
+            <div class="text-2xl font-medium space-y-6 lg:space-y-10">
+                <p class="max-w-[984px]">
+                    Video interviews with residents in Irpin, where the slide was located.
+                </p>
+
+                <div class="lg:px-20 grid grid-cols-2 gap-8" x-data="{}">
+                                            <button
+                                type="button"
+                                class="aspect-video w-full bg-center max-w-[450px] bg-cover"
+                                style="background-image:url('https://img.youtube.com/vi/7MbZ8XbkaIU/hqdefault.jpg')"
+                                @click.prevent="$dispatch('open-video', '7MbZ8XbkaIU')"
+                        >
+                            <span class="sr-only">Watch Video: Slide Project - Interview #1</span>
+                        </button>
+                                            <button
+                                type="button"
+                                class="aspect-video w-full bg-center max-w-[450px] bg-cover"
+                                style="background-image:url('https://img.youtube.com/vi/j1feeICue9M/hqdefault.jpg')"
+                                @click.prevent="$dispatch('open-video', 'j1feeICue9M')"
+                        >
+                            <span class="sr-only">Watch Video: Slide Project - Interview #2</span>
+                        </button>
+                                            <button
+                                type="button"
+                                class="aspect-video w-full bg-center max-w-[450px] bg-cover"
+                                style="background-image:url('https://img.youtube.com/vi/JKH5KX3Nd5Y/hqdefault.jpg')"
+                                @click.prevent="$dispatch('open-video', 'JKH5KX3Nd5Y')"
+                        >
+                            <span class="sr-only">Watch Video: Slide Project - Interview #3</span>
+                        </button>
+                                            <button
+                                type="button"
+                                class="aspect-video w-full bg-center max-w-[450px] bg-cover"
+                                style="background-image:url('https://img.youtube.com/vi/UF0On35XaJ8/hqdefault.jpg')"
+                                @click.prevent="$dispatch('open-video', 'UF0On35XaJ8')"
+                        >
+                            <span class="sr-only">Watch Video: Slide Project - Interview #4</span>
+                        </button>
+                                    </div>
+            </div>
+            <div></div>
+        </div>
+    </section>
+
+    <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-[#450808]">
+        <img class="w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
+             src="/images/car.png" alt="slide">
+        <div class="relative app-container flex flex-col gap-8 md:gap-16 lg:gap-[120px] text-white">
+            <div class="flex items-center gap-6">
+                <h3 class="text-sm uppercase tracking-[0.2em]">
+                    What Happened
+                </h3>
+                <svg width="178" height="2">
+                    <rect width="178" height="2" fill="currentColor" />
+                </svg>
+            </div>
+            <h2 class="text-5xl font-bold leading-tight max-w-[560px]">
+                This is not an isolated incident in one town...
+            </h2>
+            <div class="text-2xl font-medium max-w-[984px] space-y-6">
+                <p>
+                    Russia has committed many war crimes all over Ukraine:
+                </p>
+                <p>
+                    the use of cluster munitions on civilian targets; killings, torture and sexual violence against
+                    civilian adults and children; targeting civilian infrastructure such as schools and playgrounds;
+                    attacking cultural sites and medical care facilities.
+                </p>
+                <p>
+                    This is an effort to wipe out what it means to be Ukrainian. It is genocide.
+                </p>
+            </div>
+            <div></div>
+        </div>
+    </section>
+
+    <section class="bg-yellow-ua">
+        <div class="app-container flex justify-center gap-6 md:gap-12 py-4 md:py-12">
+            <p class="text-xl md:text-2xl lg:text-5xl font-bold">
+                And did you know&hellip;
+            </p>
+        </div>
+    </section>
+
     <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-blue-ua">
         <img class="w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
-             src="/images/slide.png" alt="slide">
+             src="/images/windshield.png" alt="ruined windshield">
         <div class="relative app-container flex flex-col gap-8 md:gap-16 lg:gap-[120px] text-white">
             <div class="flex items-center gap-6">
                 <h3 class="text-sm uppercase tracking-[0.2em]">
@@ -124,7 +223,7 @@
 
     <section class="relative overflow-hidden py-8 md:py-16 lg:py-[120px] bg-yellow-ua">
         <img class="lg:w-full min-h-full object-cover absolute inset-0 mix-blend-multiply"
-             src="/images/slide.png" alt="slide">
+             src="/images/girl.png" alt="girl with slide">
         <div class="relative app-container flex flex-col gap-8 md:gap-16 lg:gap-[120px] text-white">
             <div class="flex items-center gap-6">
                 <h3 class="text-sm uppercase tracking-[0.2em]">
@@ -135,7 +234,7 @@
                 </svg>
             </div>
             <h2 class="text-5xl font-bold leading-tight max-w-[560px]">
-                An object of the current war experience in Ukraine
+                As of August 10th, 2022, at least 942 children have been killed or injured
             </h2>
             <div class="text-2xl font-medium max-w-[984px] space-y-6">
                 <p>
@@ -146,12 +245,66 @@
             <div></div>
         </div>
     </section>
+
+    <div x-data="{ open: false, id: null, close() {this.open = false; this.id = null} }" class="flex justify-center" @open-video.window="id = $event.detail; open = true">
+        <template x-teleport="body">
+            <!-- Modal -->
+            <div
+                    x-show="open"
+                    style="display: none"
+                    x-on:keydown.escape.prevent.stop="close()"
+                    role="dialog"
+                    aria-modal="true"
+                    x-id="['modal-title']"
+                                        :aria-labelledby="$id('modal-title')"
+                    class="fixed inset-0 z-10 overflow-y-auto"
+            >
+                <!-- Overlay -->
+                <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-70"></div>
+
+                <!-- Panel -->
+                <div
+                        x-show="open" x-transition
+                        x-on:click="close()"
+                        class="relative flex min-h-screen items-center justify-center p-4"
+                >
+                    <div
+                            x-on:click.stop
+                            x-trap.noscroll.inert="open"
+                            class="relative w-full max-w-2xl overflow-y-auto rounded-xl bg-black p-4 lg:p-8 shadow-lg"
+                    >
+                        <div class="relative pt-[56.25%] h-0 overflow-hidden">
+                            <iframe :src="'https://www.youtube.com/embed/'+id+'?autoplay=1'"
+                                    class="absolute inset-0 w-full h-full"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
 </main>
 
 <footer class="p-[60px] space-y-[60px]">
-    <div class="space-y-[20px]">
-                <p>
-            &copy; Ukraine Defenders 2022
+    <div class="space-y-6">
+        <div class="flex flex-wrap justify-center items-end gap-8">
+            <div class="flex flex-wrap justify-center md:flex-no-wrap gap-x-12 gap-y-4">
+                <img src="/images/logo.svg"/>
+                <img src="/images/thanks/rozdroza.png" alt="OŚRODEK ROZDROŻA" class="h-[42px]"/>
+                <img src="/images/thanks/ikml.png" alt="" class="h-[42px]"/>
+                <img src="/images/thanks/Davaj_Ukraine_v01_A3.png" alt="Davaj Ukraine" class="h-[42px]"/>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="/donate" class="text-blue-ua font-bold underline">Donate Today</a>
+        </div>
+        <p class="text-center">
+            Copyright © Ukraine Defenders, 2022.<br>
+            We are a non-profit registered in Texas, US with EIN #: B8-1395390
         </p>
     </div>
 </footer></body>
