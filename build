@@ -20,6 +20,7 @@ $twig = \App\Actions\GetPreparedTwig::run(__DIR__.'/templates');
 $files = [
     '/' => 'index.html.twig',
     '/donate' => 'donate.html.twig',
+    '/thank-you' => 'thank-you.html.twig',
 ];
 $data = array_merge(include('../data.php'), ['env' => 'production']);
 foreach($files as $path => $file) {
